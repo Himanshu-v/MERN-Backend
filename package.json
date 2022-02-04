@@ -1,0 +1,23 @@
+{
+  "name": "inotebook-backend",
+  "version": "1.0.0",
+  "description": "Cloud based memo.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Himanshu-v/iNotebook-Backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Himanshu-v/iNotebook-Backend/issues"
+  },
+  "homepage": "https://github.com/Himanshu-v/iNotebook-Backend#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongoose": "^6.2.0"
+  }
+}
