@@ -3,8 +3,8 @@ const express = require("express");
 
 connectToMongo();
 const app = express();
-const port = 3000;
-app.use(express.json()); // Middleware to allow access the request body.
+const port = 5000;
+app.use(express.json()); // Middleware to allow access to the request body.
 
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/notes", require("./routes/notes"));
