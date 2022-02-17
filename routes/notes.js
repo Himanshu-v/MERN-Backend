@@ -8,10 +8,12 @@ const Note = require("../models/Note");
 router.get("/fetchallnotes", fetchUser, async (req, res) => {
   try {
     const note = await Note.find({ user: req.user.id });
-    res.json(note);
+    return res.json(note);
   } catch (error) {
     console.log(error);
-    res.status(500).send({ error: "Internal Server Error, try again later!" });
+    return res
+      .status(500)
+      .send({ error: "Internal Server Error, try again later!" });
   }
 });
 
@@ -29,6 +31,7 @@ router.post(
   ],
   async (req, res) => {
     try {
+      console.log(req.body);
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
@@ -39,10 +42,10 @@ router.post(
         description: req.body.description,
         tag: req.body.tag,
       });
-      res.json(note);
+      return res.json(note);
     } catch (error) {
       console.log(error);
-      res
+      return res
         .status(500)
         .send({ error: "Internal Server Error, try again later!" });
     }
@@ -98,7 +101,7 @@ router.put(
       res.json(note);
     } catch (error) {
       console.log(error);
-      res
+      return res
         .status(500)
         .send({ error: "Internal Server Error, try again later!" });
     }
@@ -118,7 +121,7 @@ router.delete("/deletenote/:id", fetchUser, async (req, res) => {
     }
 
     note = await Note.findByIdAndDelete(req.params.id);
-    res.json({ Success: "Note Deleted", note: note });
+    return res.json({ Success: "Note Deleted", note: note });
   } catch (error) {
     console.log(error);
     res.status(500).send({ error: "Internal Server Error, try again later!" });

@@ -53,7 +53,7 @@ router.post(
       res.json({ authtoken });
     } catch (e) {
       console.log(e);
-      res.status(500).json({ message: e.message });
+      return res.status(500).json({ message: e.message });
     }
   }
 );
@@ -95,10 +95,10 @@ router.post(
       };
       const authtoken = jwt.sign(data, secretkey);
 
-      res.json({ authtoken });
+      return res.json({ authtoken });
     } catch (error) {
       console.log(e);
-      res.status(500).json({ message: e.message });
+     return  res.status(500).json({ message: e.message });
     }
   }
 );
@@ -109,10 +109,10 @@ router.post("/getUser/", fetchUser, async (req, res) => {
   try {
     userid = req.user.id;
     let user = await User.findById(userid).select("-password");
-    res.send(user);
+   return  res.send(user);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: error.message });
+   return res.status(500).json({ message: error.message });
   }
 });
 
